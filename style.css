@@ -1,0 +1,348 @@
+/* General Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Arial', sans-serif;
+    color: #ddd;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    overflow: hidden;
+    transition: all 0.5s ease;
+    background-color: #1e1e2f; /* Dark purple background */
+}
+
+body.loaded {
+    background: linear-gradient(to bottom right, #4b0082, #8a2be2);
+    background-attachment: fixed;
+}
+
+.page {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    opacity: 0;
+    transition: opacity 1s ease-in-out;
+}
+
+#welcome-page {
+    background: rgba(75, 0, 130, 0.9);
+    color: #f8f8ff; /* Ghost white text */
+    text-align: center;
+    opacity: 1;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.7);
+    border-radius: 20px;
+    padding: 20px;
+    max-width: 100%;
+}
+
+.welcome-text h1 {
+    font-size: 4.5rem;
+    margin-bottom: 20px;
+    letter-spacing: 3px;
+    text-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+}
+
+.welcome-text p {
+    font-size: 1.8rem;
+    text-shadow: 0 2px 5px rgba(0, 0, 0, 0.4);
+}
+
+.container {
+    text-align: center;
+    padding-top: 100px;
+}
+
+/* Section for mission and values */
+.mission-section {
+    position: absolute;
+    top: 5%;
+    width: 90%;
+    left: 5%;
+    background: rgba(50, 50, 70, 0.9);
+    padding: 20px;
+    border-radius: 12px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+}
+
+.mission-section h2 {
+    text-align: center;
+    font-size: 2rem;
+    color: #f0e6ff; /* Light purple text */
+    margin-bottom: 15px;
+}
+
+.mission-section p {
+    font-size: 1.2rem;
+    line-height: 1.6;
+    color: #cfc6e6;
+    margin-bottom: 10px;
+}
+
+ul {
+    list-style: none;
+    padding: 0;
+    transition: all 2s ease;
+    opacity: 1;
+}
+
+ul li {
+    margin-bottom: 20px;
+    transition: all 2s ease;
+}
+
+ul li a {
+    font-size: 2rem;
+    color: #b19cd9; /* Soft lavender color */
+    text-decoration: none;
+    transition: color 0.3s, text-shadow 0.3s;
+}
+
+ul li a:hover {
+    color: #d8bfd8; /* Thistle color */
+    text-shadow: 0 3px 10px rgba(216, 191, 216, 0.5);
+}
+
+.nav-item {
+    opacity: 1;
+    display: block;
+    transition: opacity 2s ease, transform 2s ease;
+    position: relative;
+}
+
+.nav-item-transition {
+    transform: translate(0, 0);
+    opacity: 1;
+}
+
+.nav-item-horizontal {
+    display: inline-block;
+    margin-right: 30px;
+    font-size: 1.2rem;
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    color: #f8f8ff; /* Ghost white text */
+    text-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+}
+
+.hidden {
+    opacity: 0;
+    pointer-events: none;
+}
+
+#buttons {
+    display: flex;
+    gap: 20px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+button {
+    padding: 15px 30px;
+    font-size: 18px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+    border: none;
+    border-radius: 12px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.5);
+    position: relative;
+    overflow: hidden;
+    color: #fff;
+}
+
+button:hover {
+    opacity: 0.95;
+    transform: scale(1.15);
+}
+
+.login-btn {
+    background: linear-gradient(135deg, #6a0dad, #8a2be2);
+    color: white;
+    box-shadow: 0 4px 15px rgba(138, 43, 226, 0.5);
+}
+
+.signup-btn {
+    background: linear-gradient(135deg, #4b0082, #9370db);
+    color: white;
+    box-shadow: 0 4px 15px rgba(75, 0, 130, 0.5);
+}
+
+button::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: rgba(255, 255, 255, 0.3);
+    transform: skewX(-45deg);
+    transition: left 0.3s;
+}
+
+button:hover::before {
+    left: 100%;
+}
+
+.new-content {
+    padding-top: 150px;
+    transition: padding-top 1s ease-in-out;
+}
+
+/* Enhanced Animated Background */
+body.loaded::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: radial-gradient(circle at center, #4b0082, #8a2be2, #9370db);
+    background-size: 400% 400%;
+    z-index: -1;
+    animation: enhanced-bg-animation 8s infinite alternate ease-in-out;
+}
+
+@keyframes enhanced-bg-animation {
+    0% {
+        background-position: 0% 50%;
+    }
+    50% {
+        background-position: 50% 100%;
+    }
+    100% {
+        background-position: 100% 50%;
+    }
+}
+
+/* Sparkling Stars Effect */
+body.loaded::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+    pointer-events: none;
+    background: radial-gradient(circle, rgba(255, 255, 255, 0.7) 2px, transparent 2px);
+    background-size: 20px 20px;
+    opacity: 0.8;
+    animation: sparkle 1.5s linear infinite;
+}
+
+@keyframes sparkle {
+    0%, 100% {
+        background-position: 0 0;
+    }
+    50% {
+        background-position: 10px 10px;
+    }
+}
+
+/* Media Queries for Responsiveness */
+@media (max-width: 1200px) {
+    .welcome-text h1 {
+        font-size: 3.5rem;
+    }
+
+    .welcome-text p {
+        font-size: 1.5rem;
+    }
+
+    .mission-section {
+        top: 10%;
+        left: 10%;
+        width: 80%;
+        padding: 15px;
+    }
+
+    #buttons {
+        top: 45%;
+    }
+
+    button {
+        padding: 12px 24px;
+        font-size: 16px;
+    }
+
+    .nav-item-horizontal {
+        font-size: 1rem;
+    }
+}
+
+@media (max-width: 768px) {
+    body {
+        flex-direction: column;
+    }
+
+    .welcome-text h1 {
+        font-size: 2.8rem;
+    }
+
+    .welcome-text p {
+        font-size: 1.4rem;
+    }
+
+    .mission-section {
+        top: 15%;
+        left: 5%;
+        width: 90%;
+        padding: 12px;
+    }
+
+    #buttons {
+        flex-direction: column;
+        gap: 15px;
+    }
+
+    button {
+        padding: 10px 20px;
+        font-size: 14px;
+    }
+
+    .nav-item-horizontal {
+        font-size: 0.9rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .welcome-text h1 {
+        font-size: 2rem;
+    }
+
+    .welcome-text p {
+        font-size: 1.2rem;
+    }
+
+    .mission-section {
+        top: 20%;
+        left: 5%;
+        width: 90%;
+        padding: 10px;
+    }
+
+    #buttons {
+        top: 60%;
+        gap: 10px;
+    }
+
+    button {
+        padding: 8px 18px;
+        font-size: 12px;
+    }
+
+    .nav-item-horizontal {
+        font-size: 0.8rem;
+    }
+}
